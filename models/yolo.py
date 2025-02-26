@@ -55,7 +55,7 @@ class Detect(nn.Module):
             bs, _, ny, nx = x[i].shape  # x(bs,255,20,20) to x(bs,3,20,20,85)
             x[i] = x[i].view(bs, self.na, self.no, ny, nx).permute(0, 1, 3, 4, 2).contiguous()
 
-            if not self.training:  # inference
+            if not self.training and not self.validation: # inference
                 if self.grid[i].shape[2:4] != x[i].shape[2:4]:
                     self.grid[i] = self._make_grid(nx, ny).to(x[i].device)
                 y = x[i].sigmoid()
@@ -69,7 +69,7 @@ class Detect(nn.Module):
                     y = torch.cat((xy, wh, conf), 4)
                 z.append(y.view(bs, -1, self.no))
 
-        if self.training:
+        if self.training or self.validation:
             out = x
         elif self.end2end:
             out = torch.cat(z, 1)
@@ -155,7 +155,9 @@ class IDetect(nn.Module):
 
             if not self.training:  # inference
                 if self.grid[i].shape[2:4] != x[i].shape[2:4]:
-                    self.grid[i] = self._make_grid(nx, ny).to(x[i].device)
+                    self.grid[i] = self._make_grid(nx, ny)
+                if self.grid[i].device != x[i].device:
+                    self.grid[i] .to(x[i].device)
 
                 y = x[i].sigmoid()
                 if not torch.onnx.is_in_onnx_export():
