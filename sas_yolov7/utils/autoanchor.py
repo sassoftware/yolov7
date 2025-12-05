@@ -6,7 +6,7 @@ import yaml
 from scipy.cluster.vq import kmeans
 from tqdm import tqdm
 
-from utils.general import colorstr
+from sas_yolov7.utils.general import colorstr
 
 # Override the built in print function so that the std out by print does not interfere with the communication to the CAS process
 try: 
