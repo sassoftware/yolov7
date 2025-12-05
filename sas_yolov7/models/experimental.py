@@ -3,8 +3,8 @@ import random
 import torch
 import torch.nn as nn
 
-from models.common import Conv, DWConv
-from utils.google_utils import attempt_download
+from sas_yolov7.models.common import Conv, DWConv
+from sas_yolov7.utils.google_utils import attempt_download
 
 # Override the built in print function so that the std out by print does not interfere with the communication to the CAS process
 try: 

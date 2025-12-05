@@ -4,8 +4,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from utils.general import bbox_iou, bbox_alpha_iou, box_iou, box_giou, box_diou, box_ciou, xywh2xyxy
-from utils.torch_utils import is_parallel
+from sas_yolov7.utils.general import bbox_iou, bbox_alpha_iou, box_iou, box_giou, box_diou, box_ciou, xywh2xyxy
+from sas_yolov7.utils.torch_utils import  is_parallel
 
 # Override the built in print function so that the std out by print does not interfere with the communication to the CAS process
 try: 
