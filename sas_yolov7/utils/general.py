@@ -19,7 +19,6 @@ import torchvision
 import yaml
 
 from sas_yolov7.utils.google_utils import gsutil_getsize
-from sas_yolov7.utils.metrics import fitness
 from sas_yolov7.utils.torch_utils import init_torch_seeds
 
 # Settings
