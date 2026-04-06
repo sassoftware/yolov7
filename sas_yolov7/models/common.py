@@ -14,7 +14,6 @@ from torch.cuda import amp
 
 from sas_yolov7.utils.datasets import letterbox
 from sas_yolov7.utils.general import non_max_suppression, make_divisible, scale_coords, increment_path, xyxy2xywh
-#from utils.plots import color_list, plot_one_box
 from sas_yolov7.utils.torch_utils import time_synchronized
 
 # Override the built in print function so that the std out by print does not interfere with the communication to the CAS process
